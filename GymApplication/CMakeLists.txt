@@ -22,7 +22,9 @@ set(PROJECT_SOURCES_CONTROLLERS_DIR
 include_directories(
         ${PROJECT_HEADERS_CONTROLLERS_DIR}
         ${PROJECT_SOURCES_CONTROLLERS_DIR})
-
+set(CONTROLLERS_SOURCE_FILES
+        ${PROJECT_HEADERS_CONTROLLERS_DIR}/controllers.h
+        ${PROJECT_SOURCES_CONTROLLERS_DIR}/controllers.cpp)
 set(PROJECT_HEADERS_EXCEPTIONS_DIR
         ${PROJECT_HEADERS_DIR}/exceptions)
 set(PROJECT_SOURCES_EXCEPTIONS_DIR
@@ -72,6 +74,28 @@ set(MODEL_SOURCE_FILES
         ${PROJECT_HEADERS_MODEL_DIR}/classContainer.h
         ${PROJECT_SOURCES_MODEL_DIR}/classContainer.cpp)
 
+set(PROJECT_HEADERS_VIEW_DIR
+        ${PROJECT_HEADERS_DIR}/view)
+set(PROJECT_SOURCES_VIEW_DIR
+        ${PROJECT_SOURCES_DIR}/view)
+include_directories(
+        ${PROJECT_HEADERS_VIEW_DIR}
+        ${PROJECT_SOURCES_VIEW_DIR})
+set(VIEWS_SOURCE_FILES
+        ${PROJECT_HEADERS_VIEW_DIR}/utils.h
+        ${PROJECT_SOURCES_VIEW_DIR}/utils.cpp
+        ${PROJECT_HEADERS_VIEW_DIR}/view.h
+        ${PROJECT_SOURCES_VIEW_DIR}/view.cpp
+        ${PROJECT_HEADERS_VIEW_DIR}/classView.h
+        ${PROJECT_SOURCES_VIEW_DIR}/classView.cpp
+        ${PROJECT_HEADERS_VIEW_DIR}/clientView.h
+        ${PROJECT_SOURCES_VIEW_DIR}/clientView.cpp
+        ${PROJECT_HEADERS_VIEW_DIR}/lectureView.h
+        ${PROJECT_SOURCES_VIEW_DIR}/lectureView.cpp
+        ${PROJECT_HEADERS_VIEW_DIR}/employeeView.h
+        ${PROJECT_SOURCES_VIEW_DIR}/employeeView.cpp
+        ${PROJECT_HEADERS_VIEW_DIR}/enrollView.h
+        ${PROJECT_SOURCES_VIEW_DIR}/enrollView.cpp)
 
 
 
