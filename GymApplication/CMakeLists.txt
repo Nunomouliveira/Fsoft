@@ -72,7 +72,16 @@ set(MODEL_SOURCE_FILES
         ${PROJECT_HEADERS_MODEL_DIR}/class.h
         ${PROJECT_SOURCES_MODEL_DIR}/class.cpp
         ${PROJECT_HEADERS_MODEL_DIR}/classContainer.h
-        ${PROJECT_SOURCES_MODEL_DIR}/classContainer.cpp)
+        ${PROJECT_SOURCES_MODEL_DIR}/classContainer.cpp
+        ${PROJECT_HEADERS_MODEL_DIR}/feedback.h
+        ${PROJECT_SOURCES_MODEL_DIR}/feedback.cpp
+        ${PROJECT_HEADERS_MODEL_DIR}/feed.h
+        ${PROJECT_SOURCES_MODEL_DIR}/feed.cpp
+        ${PROJECT_HEADERS_MODEL_DIR}/FeedContainer.h
+        ${PROJECT_SOURCES_MODEL_DIR}/FeedContainer.cpp
+        ${PROJECT_HEADERS_MODEL_DIR}/feedbackContainer.h
+        ${PROJECT_SOURCES_MODEL_DIR}/feedbackContainer.cpp
+        )
 
 set(PROJECT_HEADERS_VIEW_DIR
         ${PROJECT_HEADERS_DIR}/view)
@@ -95,7 +104,10 @@ set(VIEWS_SOURCE_FILES
         ${PROJECT_HEADERS_VIEW_DIR}/employeeView.h
         ${PROJECT_SOURCES_VIEW_DIR}/employeeView.cpp
         ${PROJECT_HEADERS_VIEW_DIR}/enrollView.h
-        ${PROJECT_SOURCES_VIEW_DIR}/enrollView.cpp)
+        ${PROJECT_SOURCES_VIEW_DIR}/enrollView.cpp
+        ${PROJECT_HEADERS_VIEW_DIR}/feedbackView.h
+        ${PROJECT_SOURCES_VIEW_DIR}/feedbackView.cpp
+        )
 
 
 
