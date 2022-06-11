@@ -64,10 +64,6 @@ TEST(EmployeeContainerRemoveTest, NoDataConsistencyProblem) {
 
 TEST(EmployeeContainerRemoveTest, DataConsistencyProblem) {
     Employee employee ("MIEL", "Miguel");
-    Class classes ("XXXX", "XXXXXXXXXXXXXXXXXX");
-    Lecture lecture(&classes);
-    LectureContainer lectureContainer;
-    lectureContainer.add(lecture);
     EmployeeContainer container;
     container.add(employee);
     const string& initials = employee.getInitials();
