@@ -4,20 +4,23 @@
 
 #include <iostream>
 #include "employeeView.h"
-#include "Utils.h"
+#include "utils.h"
 #include "InvalidDataException.h"
 using namespace std;
 
 
-employee EmployeeView::getEmployee() {
-    employee employee("Initials", "Name");
+Employee EmployeeView::getEmployee() {
+    Employee employee("Initials", "Name");
+    string name;
+    string initials;
     bool flag = false;
     do{
         try{
             flag = false;
-            cout<<"Employee"<<endl;
-            string name = Utils::getString("Name");
-            string initials = Utils::getString("Initials");
+            cout << "Enter Employee Name: ";
+            cin >> name;
+            cout << "Enter Employee Initials";
+            cin >> initials;
             employee.setName(name);
             employee.setInitials(initials);
         }catch(InvalidDataException& e){
@@ -27,12 +30,12 @@ employee EmployeeView::getEmployee() {
     return employee;
 }
 
-void EmployeeView::printEmployee(employee *employee) {
-    cout<<employee->getInitials()<<":"<<employee->getName()<<endl;
+void EmployeeView::printEmployee(Employee *employee) {
+    cout<<employee->getName()<<" - "<<employee->getInitials()<<endl;
 
 }
-void EmployeeView::printEmployees(list<employee> &employees) {
-    for (list<employee>::iterator it=employees.begin(); it != employees.end(); ++it){
+void EmployeeView::printEmployees(list<Employee> &employees) {
+    for (list<Employee>::iterator it=employees.begin(); it != employees.end(); ++it){
         printEmployee(&*it);
     }
 }

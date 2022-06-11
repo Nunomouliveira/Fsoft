@@ -40,7 +40,7 @@ void FeedbackView::printFeedback(Feedback *feedback) {
     Client *client = feedback->getClient();
     Class * classes = feedback->getClass();
     Feed * feed = feedback->getFeed();
-    cout<<client->getNumber()<<". Name: "<<client->getName()<<" -> "<<classes->getInitials()<<" - "<<classes->getDenomination()<<" -> "<<feed->getFeed()<<"*"<<endl;
+    cout<<client->getNumber()<<". Name: "<<client->getName()<<" -> "<<classes->getInitials()<<" - "<<classes->getDenomination()<<" -> "<<to_string(feed->getFeed())<<"*"<<endl;
 }
 
 void FeedbackView::printFeedbacks(list<Feedback> &feedbacks) {

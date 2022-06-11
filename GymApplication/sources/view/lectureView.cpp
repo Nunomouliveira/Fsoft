@@ -3,8 +3,8 @@
 //
 
 #include <iostream>
-#include "LectureView.h"
-#include "Utils.h"
+#include "lectureView.h"
+#include "utils.h"
 #include "InvalidDataException.h"
 #include "lecture.h"
 #include "classContainer.h"
@@ -14,12 +14,13 @@ using namespace std;
 
 Lecture LectureView::getLecture(ClassContainer & classes){
     Lecture lecture((Class *)1);
+    string initials;
     bool flag = false;
     do{
         try{
             flag = false;
-            cout<<"Lecture"<<endl;
-            string initials = Utils::getString("Enter Subject Initials");
+            cout << "Enter Class Initials: ";
+            cin >> initials;
             Class *classet = classes.get(initials);
             lecture.setClass(classet);
 
@@ -32,9 +33,9 @@ Lecture LectureView::getLecture(ClassContainer & classes){
 
 void LectureView::printLecture(Lecture *lecture){
     Class * classes = lecture->getClass();
-    cout<<"\t"<<classes->getInitials()<<":"<<classes->getDenomination()<<endl;
+    cout<<"\t"<<classes->getDenomination()<<" - "<<classes->getInitials()<<endl;
 }
-void LectureView::printLectures(employee * employee, list<Lecture>& lectures){
+void LectureView::printLectures(Employee * employee, list<Lecture>& lectures){
     cout<<employee->getInitials()<<":"<<employee->getName()<<endl;
     for (list<Lecture>::iterator it=lectures.begin(); it != lectures.end(); ++it){
         printLecture(&*it);

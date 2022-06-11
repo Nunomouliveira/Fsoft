@@ -4,21 +4,27 @@
 
 #include <iostream>
 #include "clientView.h"
-#include "Utils.h"
+#include "utils.h"
 #include "InvalidDataException.h"
 using namespace std;
+
+
+
 
 Client ClientView::getClient(){
 
     Client client("Name", "age");
     bool flag = false;
+    string name;
+    string age;
     do{
         try{
             flag = false;
-            cout<<"Client"<<endl;
-            string name = Utils::getString("Name ");
+            cout << "Enter Client Name: ";
+            cin >> name;
             client.setName(name);
-            int age = Utils::getNumber("Age ");
+            cout << "Enter Client Age: ";
+            cin >> age;
             client.setAge(age);
         }catch(InvalidDataException& e){
             flag = true;
@@ -28,7 +34,7 @@ Client ClientView::getClient(){
 }
 
 void ClientView::printClient(Client *client){
-    cout<<client->getNumber()<<"-"<<"Nome: "<<client->getName()<<":"<<client->getAge()<<" anos"<<endl;
+    cout<<client->getNumber()<<". "<<"Nome: "<<client->getName()<<" - "<<client->getAge()<<" anos"<<endl;
 }
 void ClientView::printClients(list<Client>& clients){
     for (list<Client>::iterator it=clients.begin(); it != clients.end(); ++it){
