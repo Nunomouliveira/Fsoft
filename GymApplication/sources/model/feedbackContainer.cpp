@@ -7,7 +7,7 @@
 
 using namespace std;
 
-list<Feedback>::iterator FeedbackContainer::search(int number, const string& initials, int feed){
+list<Feedback>::iterator FeedbackContainer::searchCla(int number, const string& initials, int feed){
     list<Feedback>::iterator it = this->feedbacks.begin();
     for (; it != this->feedbacks.end(); ++it){
         Class * classes = it->getClass();
@@ -23,8 +23,8 @@ list<Feedback> FeedbackContainer::getAll(){
     list<Feedback> newlist (this->feedbacks);
     return newlist;
 }
-Feedback* FeedbackContainer::get(int number, const string& initials, int feed){
-    list<Feedback>::iterator it = search(number,initials,feed);
+Feedback* FeedbackContainer::getCla(int number, const string& initials, int feed){
+    list<Feedback>::iterator it = searchCla(number,initials,feed);
     if(it != this->feedbacks.end()){
         return &*it;
     }
@@ -35,7 +35,7 @@ void  FeedbackContainer::add(const Feedback& obj){
     Class* classes = obj.getClass();
     Client * client = obj.getClient();
     Feed* feed = obj.getFeed();
-    list<Feedback>::iterator it = search(client->getNumber(),classes->getInitials(),feed->getFeed());
+    list<Feedback>::iterator it = searchCla(client->getNumber(),classes->getInitials(),feed->getFeed());
     if(it == this->feedbacks.end()){
         this->feedbacks.push_back(obj);
     }else{
@@ -43,3 +43,5 @@ void  FeedbackContainer::add(const Feedback& obj){
         throw DuplicatedDataException(msg);
     }
 }
+
+

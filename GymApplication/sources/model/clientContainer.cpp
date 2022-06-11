@@ -33,12 +33,12 @@ void ClientContainer::add(const Client& obj){
     if(it == this->clients.end()){
         this->clients.push_back(obj);
     }else{
-        string msg = "Clinet: " + to_string(obj.getNumber());
+        string msg = "Client: " + to_string(obj.getNumber());
         throw DuplicatedDataException(msg);
     }
 }
 void ClientContainer::remove(int number){
-    list<tuple<Client *, int>> l;
+    list<tuple<Class *, int>> l;
     list<Client>::iterator it = search(number);
     if(it != this->clients.end()){
         l = this->enrolls->getClasses(number);
@@ -53,6 +53,9 @@ void ClientContainer::remove(int number){
 }
 void ClientContainer::setEnrolls(EnrollContainer *enrolls) {
     this->enrolls = enrolls;
+}
+void ClientContainer::setFeeds(FeedContainer *feeds) {
+    this->feeds = feeds;
 }
 
 

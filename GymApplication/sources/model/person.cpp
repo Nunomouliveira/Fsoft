@@ -7,7 +7,7 @@
 
 
 bool Person::ValidName(const string &name) {
-    if(name.length() < 3){
+    if(name.length() < 1){
         return false;
     }
     return true;
@@ -26,11 +26,10 @@ Person::~Person(){
 const string&  Person::getName() const {
     return name;
 }
-void  Person::setName(const string &name) {
+void Person::setName(const string &name) {
     if(ValidName(name)){
         this->name = name;
     }else{
-
         string msg = "Person: " + name;
         throw InvalidDataException(msg);
     }

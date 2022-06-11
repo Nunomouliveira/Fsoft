@@ -2,7 +2,7 @@
 // Created by migue on 09/06/2022.
 //
 #include "DuplicatedDataException.h"
-#include "../headers/model/classContainer.h"
+#include "classContainer.h"
 #include "DataConsistencyException.h"
 
 int ClassContainer::search(const string& initials){
@@ -21,7 +21,7 @@ list<Class> ClassContainer::getAll(){
     return list;
 }
 Class* ClassContainer::get(const string& initials){
-    Class *Class = NULL;
+    Class *classes = NULL;
     int i = search(initials);
     if(i != -1){
         classes = &this->classes[i];
@@ -43,7 +43,6 @@ void ClassContainer::remove(const string& initials){
     bool exist;
     int i = search(initials);
     if(i != -1){
-        listEnrolls = this->enrolls->getClients(initials);
         exist = this->employees->anyClass(initials);
         if(listEnrolls.size() == 0 && exist==false){
             this->classes.erase(this->classes.begin() + i);
@@ -62,6 +61,8 @@ void ClassContainer::setEnrolls(EnrollContainer *enrolls){
 void ClassContainer::setEmployees(EmployeeContainer *employees) {
     this->employees = employees;
 }
-
+void ClassContainer::setFeeds(FeedContainer *feeds) {
+    this->feeds = feeds;
+}
 
 

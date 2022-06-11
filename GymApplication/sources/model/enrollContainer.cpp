@@ -33,8 +33,8 @@ Enroll*  EnrollContainer::get(int number, const string& initials){
 list<tuple<Class *, int>> EnrollContainer::getClasses(int number) {
     list<tuple<Class *, int>> newlist;
     for (list<Enroll>::iterator it = this->enrolls.begin(); it != this->enrolls.end(); ++it){
-        Client * student = it->getClient();
-        if(student->getNumber()== number){
+        Client * client = it->getClient();
+        if(client->getNumber()== number){
             tuple<Class *, int> t = make_tuple(it->getClass(),0);
             newlist.push_back(t);
         }
