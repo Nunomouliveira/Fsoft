@@ -29,7 +29,7 @@ TEST(EmployeeSetNameTest, InvalidName) {
     Employee employee ("MIEL", "Miguel");
     bool flag = false;
     try{
-        employee.setName("a");
+        employee.setName("");
     }catch(InvalidDataException& e){
         flag = true;
     }

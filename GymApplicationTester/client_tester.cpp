@@ -9,7 +9,7 @@
 TEST(ClientConstructorTest, InvalidName) {
     bool flag = false;
     try{
-        Client client ("a", "18");
+        Client client ("", "18");
     }catch(InvalidDataException& e){
         flag = true;
     }
@@ -30,7 +30,7 @@ TEST(ClientSetNameTest, InvalidName) {
     Client client ("Miguel", "18");
     bool flag = false;
     try{
-        client.setName("a");
+        client.setName("");
     }catch(InvalidDataException& e){
         flag = true;
     }
