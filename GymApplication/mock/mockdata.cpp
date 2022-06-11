@@ -3,8 +3,20 @@
 //
 #include "mockdata.h"
 #include "DuplicatedDataException.h"
+Feed mockdata::genFeed() {
+    int feed = 1 + (rand() % 5);
+    Feed fd(feed);
+    return fd;
+}
 
 
+void mockdata::insertFeed(FeedContainer &container) {
+    int feeds[6] = {1,2,3,4,5};
+    for (size_t i = 0; i < 4;i++){
+        Feed obj(feeds[i]);
+        container.add(obj);
+    }
+}
 void  mockdata::insertClasses(ClassContainer& container){
     for (size_t  i = 0; i < this->n_classes.size();i++){
         Class obj(this->n_i_cla[i],this->n_classes[i]);
@@ -25,7 +37,7 @@ void  mockdata::insertClients(ClientContainer& container){
 
 void  mockdata::insertEmployees(EmployeeContainer &container) {
     for (size_t i = 0; i < n_emp.size();i++){
-        employee obj(n_i_emp[i],n_emp[i]);
+        Employee obj(n_i_emp[i],n_emp[i]);
         try{
             container.add(obj);
         }catch(DuplicatedDataException& e){
@@ -33,7 +45,12 @@ void  mockdata::insertEmployees(EmployeeContainer &container) {
         }
     }
 }
-
+Feed*mockdata::getRandomFeed(FeedContainer &feeds) {
+    int feed = 1 + (rand() % 5);
+    int fd(feed);
+    Feed * ptr = feeds.get(fd);
+    return ptr;
+}
 Class * mockdata::getRandomClass(ClassContainer &classes) {
     list<Class> listClass = classes.getAll();
     list<Class>::iterator it = listClass.begin();
@@ -41,21 +58,19 @@ Class * mockdata::getRandomClass(ClassContainer &classes) {
     for(int i = 0; i < is; i++){
         it++;
     }
-    //it = it + is;
     string initials = it->getInitials();
     Class * ptr = classes.get(initials);
     return ptr;
 }
-void  mockdata::insertEnrolls(ClientContainer& clients, ClassContainer& classet, EnrollContainer & container){
+void  mockdata::insertEnrolls(ClientContainer& clients, ClassContainer& class1, EnrollContainer & container){
     list<Client> listClient = clients.getAll();
     for(list<Client>::iterator it = listClient.begin(); it != listClient.end(); ++it){
         Client * client =  clients.get(it->getNumber());
         int n = 1 + rand() % ENROLLS_NR;
         for(int i = 0; i < n; i++){
-            Class * classes = getRandomClass(classet);
-            int grade = 10 + rand() % 11;
+            Class * classes = getRandomClass(class1);
             try{
-                Enroll enroll( classes, client);
+                Enroll enroll(classes, client);
                 container.add(enroll);
             }catch (DuplicatedDataException& e){
             }
@@ -63,28 +78,28 @@ void  mockdata::insertEnrolls(ClientContainer& clients, ClassContainer& classet,
         }
     }
 }
-/*void  mockdata::insertFeedbackCla(ClientContainer& clients, ClassContainer& classet, FeedbackContainer & container){
-    list<Client> listClient = clients.getAll();
-    for(list<Client>::iterator it = listClient.begin(); it != listClient.end(); ++it){
-        Client * client =  clients.get(it->getNumber());
+void mockdata::insertFeedback(FeedContainer &feed1, ClassContainer &class1, ClientContainer &client1,FeedbackContainer &container) {
+    list<Client> lstClient = client1.getAll();
+    for(list<Client>::iterator it = lstClient.begin(); it != lstClient.end(); ++it){
+        Client * client =  client1.get(it->getNumber());
         int n = 1 + rand() % FEEDBACK_NR;
         for(int i = 0; i < n; i++){
-            Class * classes = getRandomClass(classet);
-            int grade = 10 + rand() % 11;
+            Class * classes = getRandomClass(class1);
+            Feed* feeds = getRandomFeed(feed1);
             try{
-                Feedback feedback(classes, client,feed[i]);
+                Feedback feedback(classes, client, feeds);
                 container.add(feedback);
             }catch (DuplicatedDataException& e){
             }
 
         }
     }
-}*/
+}
 
 void  mockdata::insertLecture(ClassContainer & classes, EmployeeContainer & employees ){
-    list<employee> listEmployee = employees.getAll();
-    for (list<employee>::iterator it=listEmployee.begin(); it != listEmployee.end(); ++it){
-        employee * ptr = employees.get(it->getInitials());
+    list<Employee> listEmployee = employees.getAll();
+    for (list<Employee>::iterator it=listEmployee.begin(); it != listEmployee.end(); ++it){
+        Employee * ptr = employees.get(it->getInitials());
         LectureContainer& container = ptr->getLectures();
         int n = 1 + rand() % LECTURES_NR;
         for(int i = 0; i < n; i++){
@@ -98,14 +113,15 @@ void  mockdata::insertLecture(ClassContainer & classes, EmployeeContainer & empl
     }
 }
 
-void  mockdata::generateData(gym& gym){
+void  mockdata::gData(Gym& gym){
     srand (time(NULL));
     insertClasses(gym.getClassContainer());
     insertClients(gym.getClientContainer());
     insertEmployees(gym.getEmployeeContainer());
     insertEnrolls(gym.getClientContainer(), gym.getClassContainer(),gym.getEnrollContainer());
     insertLecture( gym.getClassContainer(), gym.getEmployeeContainer());
-
+    insertFeed(gym.getFeedContainer());
+    insertFeedback(gym.getFeedContainer(),gym.getClassContainer(),gym.getClientContainer(),gym.getFeedbackContainer());
 
 
 }

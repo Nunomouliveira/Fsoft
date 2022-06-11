@@ -20,16 +20,19 @@ private:
     const vector<string> n_classes = {"Cycling", "Hidroginastica", "BodyPump","BodyCombat", "Pilates"};
     const vector<string> n_i_cla = {"CYNG", "HICA", "BOMP","BOAT", "PIES"};
     const vector<string> age = {"18", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "80"};
-    const vector<string> feed = {"Não Gostei", "Gostei", "Gostei Muito", "Sem opinião"};
+    const vector<int> feed = {1,2,3,4,5};
+    void insertFeed(FeedContainer& container);
     void insertClients(ClientContainer& container);
     void insertEmployees(EmployeeContainer& container);
     void insertClasses(ClassContainer& container);
     void insertEnrolls(ClientContainer& clients, ClassContainer& classes, EnrollContainer & container);
-    void insertFeedbackCla(ClientContainer& clients, ClassContainer& classes, FeedbackContainer & container);
     void insertLecture(ClassContainer & classes, EmployeeContainer& employees);
+    void insertFeedback(FeedContainer & feed, ClassContainer & class1, ClientContainer &client1, FeedbackContainer &container);
     Class * getRandomClass(ClassContainer& classes);
+    Feed * getRandomFeed(FeedContainer& feeds);
+    Feed genFeed();
 public:
-    void generateData(gym& gym);
+    void gData(Gym& gym);
 };
 
 #endif //GYMAPPLICATION_MOCKDATA_H
