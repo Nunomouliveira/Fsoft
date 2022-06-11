@@ -5,7 +5,7 @@
 #ifndef FSOFT2022_1A_4_CLIENTVIEW_H
 #define FSOFT2022_1A_4_CLIENTVIEW_H
 #include <list>
-#include "../model/client.h"
+#include "client.h"
 
 class ClientView{
 public:

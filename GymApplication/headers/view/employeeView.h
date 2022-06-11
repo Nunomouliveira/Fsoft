@@ -6,11 +6,13 @@
 #define FSOFT2022_1A_4_EMPLOYEEVIEW_H
 
 #include <list>
-#include "../model/employee.h"
-class EmployeeView{
+#include "employee.h"
+class EmployeeView {
 public:
     Employee getEmployee();
-    void printEmployee(Employee *employee);
-    void printEmployees(list<Employee>& employees);
 
+    void printEmployee(Employee *employee);
+
+    void printEmployees(list <Employee> &employees);
+};
 #endif //FSOFT2022_1A_4_EMPLOYEEVIEW_H

@@ -6,13 +6,13 @@
 #define FSOFT2022_1A_4_LECTUREVIEW_H
 
 #include <list>
-#include "../model/lecture.h"
-#include "../model/classContainer.h"
+#include "lecture.h"
+#include "classContainer.h"
 
-class LectureView{
+class LectureView {
 public:
-    Lecture getLecture(ClassContainer & classes);
+    Lecture getLecture(ClassContainer &classes);
     void printLecture(Lecture *lecture);
-    void printLectures(Employee * employee, list<Lecture>& lectures);
-
+    void printLectures(Employee *employee, list <Lecture> &lectures);
+};
 #endif //FSOFT2022_1A_4_LECTUREVIEW_H

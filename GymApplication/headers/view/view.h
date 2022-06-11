@@ -17,7 +17,7 @@ public:
     int menuClasses();
     int menuEnrolls();
     int menuLectures();
-
+    int menuFeedback();
 
 };
 

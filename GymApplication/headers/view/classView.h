@@ -6,12 +6,12 @@
 #define FSOFT2022_1A_4_CLASSVIEW_H
 
 #include <list>
-#include "../model/class.h"
+#include "class.h"
 
 class ClassView{
 public:
     Class getClass();
-    void printClass(Class *class);
+    void printClass(Class *classes);
     void printClasses(list<Class>& classes);
 };
 
