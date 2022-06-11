@@ -13,7 +13,7 @@ public:
     Lecture(const Lecture& obj);
     ~Lecture();
     Class* getClass() const;
-    void setClass(Class *subject);
+    void setClass(Class *classes);
     bool operator == (const Lecture& obj) const;
     bool operator == (const Class* ptr) const;
 };

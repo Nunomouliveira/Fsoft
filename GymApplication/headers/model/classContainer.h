@@ -9,7 +9,7 @@
 #include "class.h"
 #include "enrollContainer.h"
 #include "employeeContainer.h"
-
+#include "FeedContainer.h"
 using namespace std;
 
 class ClassContainer{
@@ -17,6 +17,7 @@ private:
     vector<Class> classes;
     EnrollContainer *enrolls;
     EmployeeContainer *employees;
+    FeedContainer *feeds;
 public:
     int search(const string& initials);
     list<Class> getAll();
@@ -25,6 +26,7 @@ public:
     void remove(const string& initials);
     void setEnrolls(EnrollContainer *enrolls);
     void setEmployees(EmployeeContainer *employees);
+    void setFeeds(FeedContainer *feeds);
 };
 
 #endif //GYMAPPLICATION_CLASSCONTAINER_H

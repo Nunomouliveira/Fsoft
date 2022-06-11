@@ -11,13 +11,14 @@ using namespace std;
 class Person{
 protected:
     string name;
-    bool ValidName(const string& name);
 public:
     Person(const string& name);
     Person(const Person& person);
     ~Person();
     const string& getName() const;
     void setName(const string &name);
+    bool ValidName(const string& name);
+
 };
 
 

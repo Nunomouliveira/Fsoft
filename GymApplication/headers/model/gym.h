@@ -5,33 +5,37 @@
 #ifndef GYMAPPLICATION_GYM_H
 #define GYMAPPLICATION_GYM_H
 #include <string>
-#include "SubjectContainer.h"
-#include "StudentContainer.h"
-#include "InstructorContainer.h"
-#include "EnrollContainer.h"
+#include "FeedContainer.h"
+#include "classContainer.h"
+#include "clientContainer.h"
+#include "employeeContainer.h"
+#include "enrollContainer.h"
+#include "feedbackContainer.h"
 using namespace std;
 
-class School{
+class Gym{
 private :
     string name;
-    SubjectContainer subjects;
-    StudentContainer students;
-    InstructorContainer instructors;
+    ClassContainer classes;
+    ClientContainer clients;
+    EmployeeContainer employees;
     EnrollContainer enrolls;
-
+    FeedbackContainer feedback;
+    FeedContainer feed;
     void setDataForConsistency();
 public:
-    School();
-    School(const string& name);
-    School(const School& obj);
+    Gym();
+    Gym(const string& name);
+    Gym(const Gym& obj);
     const string& getName() const ;
     void setName(const string &name) ;
 
-    SubjectContainer & getSubjectContainer();
-    StudentContainer & getStudentContainer();
-    InstructorContainer & getInstructorContainer();
+    ClassContainer & getClassContainer();
+    ClientContainer & getClientContainer();
+    EmployeeContainer & getEmployeeContainer();
     EnrollContainer & getEnrollContainer();
-
+    FeedbackContainer & getFeedbackContainer();
+    FeedContainer & getFeedContainer();
 };
 
 
