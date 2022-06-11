@@ -11,11 +11,12 @@
 #include "enrollView.h"
 #include "lectureView.h"
 #include "gym.h"
+#include "classView.h"
 #include "feedbackView.h"
 
 class Controller{
 private:
-    gym model;
+    Gym model;
     ClientView clientView;
     EmployeeView employeeView;
     ClassView classView;
@@ -28,8 +29,9 @@ private:
     void runClasses();
     void runEnrolls();
     void runLectures();
+    void runFeedback();
 public:
-    Controller(gym& gym);
+    Controller(Gym& gym);
     void run();
 };
 
