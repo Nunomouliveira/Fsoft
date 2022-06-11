@@ -25,7 +25,12 @@ const int Feed::getFeed() const {
 }
 
 void Feed::setFeed(const int feed) {
-    this->feed = feed;
+    if (ValidFeed(feed)== true) {
+        this->feed = feed;
+    }else{
+        string msg = "Feed: " + feed;
+        throw InvalidDataException(msg);
+    }
 }
 
 
