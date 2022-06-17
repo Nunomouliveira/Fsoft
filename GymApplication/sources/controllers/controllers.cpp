@@ -289,7 +289,7 @@ void Controller::runFeedback() {
         op= this->view.menuFeedback();
         switch (op) {
             case 1:{
-                Feedback feedback = this->feedbackView.getFeedback((this->model.getClientContainer()),(this->model.getClassContainer()),(this->model.getFeedContainer()));
+                Feedback feedback = this->feedbackView.getFeedback((this->model.getClientContainer()),(this->model.getClassContainer()),(this->model.getFeedbackContainer()));
                 FeedbackContainer& container = this->model.getFeedbackContainer();
                 container.add(feedback);
 
@@ -302,11 +302,8 @@ void Controller::runFeedback() {
                 string initials;
                 cout << "Enter Class Initials: ";
                 cin >> initials;
-                int fee;
-                cout << "Enter Class Feedback: ";
-                cin >> fee;
                 FeedbackContainer& container = this->model.getFeedbackContainer();
-                Feedback * ptr = container.getCla(number, initials,fee);
+                Feedback * ptr = container.getCla(number, initials);
                 if(ptr != NULL){
                     this->feedbackView.printFeedback(ptr);
                 }else{

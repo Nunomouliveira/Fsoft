@@ -7,12 +7,12 @@
 #include <list>
 #include "client.h"
 #include "enrollContainer.h"
-#include "FeedContainer.h"
+#include "FeedbackContainer.h"
 class ClientContainer{
 private:
     list<Client> clients;
     EnrollContainer * enrolls;
-    FeedContainer * feeds;
+    FeedbackContainer * feeds;
 public:
     list<Client>::iterator search(int number);
     list<Client> getAll();
@@ -20,7 +20,7 @@ public:
     void add(const Client& obj);
     void remove(int number);
     void setEnrolls(EnrollContainer *enrolls);
-    void setFeeds(FeedContainer *feeds);
+    void setFeeds(FeedbackContainer *feeds);
 };
 
 #endif //GYMAPPLICATION_CLIENTCONTAINER_H

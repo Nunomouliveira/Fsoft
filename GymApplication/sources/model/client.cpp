@@ -2,36 +2,32 @@
 // Created by migue on 09/06/2022.
 //
 #include "client.h"
-
+#include <iostream>
+#include "InvalidDataException.h"
 int Client::NUMBER = 0;
 
-Client::Client(const string &name, const string &age) :Person(name){
+Client::Client(const string &name, int age) :Person(name){
     this->number = ++NUMBER;
     this->age = age;
 }
-
-
-
 Client::Client(const Client& client): Person(client.name){
     this->number = client.number;
     this->age = client.age;
 }
 Client::~Client(){
 }
-
-
-
 int Client::getNumber() const {
     return number;
 }
-
-void Client::setNumber(int number) {
-    this->number = number;
+void Client::setAge(int age) {
+    if (ValidAge(age)== true) {
+        this->age = age;
+    }else{
+        string msg = "Age error";
+        throw InvalidDataException(msg);
+    }
 }
-void Client::setAge(string age) {
-    this->age = age;
-}
-string Client::getAge() const {
+int Client::getAge() const {
     return age;
 }
 bool Client::operator == (const Client& obj) const{
@@ -40,8 +36,6 @@ bool Client::operator == (const Client& obj) const{
     }
     return false;
 }
-
-
 bool Client::operator == (int nr) const{
     if(this->number == nr){
         return true;
@@ -49,14 +43,8 @@ bool Client::operator == (int nr) const{
     return false;
 }
 
-bool Client::operator == (const string name){
-    if(this->name == name){
-        return true;
-    }
-    return false;
-}
-bool Client::ValidAge(const string &age) {
-    if(age.length()<=0){
+bool Client::ValidAge(int age) {
+    if(age<15){
         return false;
     }
     return true;

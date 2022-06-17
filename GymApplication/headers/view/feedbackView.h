@@ -8,10 +8,10 @@
 #include "feedback.h"
 #include "clientContainer.h"
 #include "classContainer.h"
-#include "FeedContainer.h"
+
 class FeedbackView{
 public:
-    Feedback getFeedback(ClientContainer & clients, ClassContainer & classes, FeedContainer & feeds);
+    Feedback getFeedback(ClientContainer & clients, ClassContainer & classes, FeedbackContainer & feeds);
     void printFeedback(Feedback *feedback);
     void printFeedbacks(list<Feedback>& feedbacks);
 };

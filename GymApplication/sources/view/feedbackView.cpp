@@ -8,8 +8,8 @@
 using namespace std;
 
 
-Feedback FeedbackView::getFeedback(ClientContainer &clients, ClassContainer &classes, FeedContainer &feeds) {
-    Feedback feedback((Class *)1,(Client *)1,(Feed*)1);
+Feedback FeedbackView::getFeedback(ClientContainer &clients, ClassContainer &classes, FeedbackContainer &feeds) {
+    Feedback feedback((Class *)1,(Client *)1,0);
     int number;
     string initials;
     int feed;
@@ -27,8 +27,7 @@ Feedback FeedbackView::getFeedback(ClientContainer &clients, ClassContainer &cla
             feedback.setClass(class1);
             cout << "Enter Class Feedback: ";
             cin >> feed;
-            Feed *feed1 = feeds.get(feed);
-            feedback.setFeed(feed1);
+            feedback.setFeed(feed);
         }catch(InvalidDataException& e){
             flag = true;
         }
@@ -39,8 +38,8 @@ Feedback FeedbackView::getFeedback(ClientContainer &clients, ClassContainer &cla
 void FeedbackView::printFeedback(Feedback *feedback) {
     Client *client = feedback->getClient();
     Class * classes = feedback->getClass();
-    Feed * feed = feedback->getFeed();
-    cout<<client->getNumber()<<". Name: "<<client->getName()<<" -> "<<classes->getInitials()<<" - "<<classes->getDenomination()<<" -> "<<to_string(feed->getFeed())<<"*"<<endl;
+    int feed = feedback->getFeed();
+    cout<<client->getNumber()<<". Name: "<<client->getName()<<" -> "<<classes->getInitials()<<" - "<<classes->getDenomination()<<" -> "<<feed<<"*"<<endl;
 }
 
 void FeedbackView::printFeedbacks(list<Feedback> &feedbacks) {

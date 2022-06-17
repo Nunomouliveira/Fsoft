@@ -61,7 +61,7 @@ void ClassContainer::setEnrolls(EnrollContainer *enrolls){
 void ClassContainer::setEmployees(EmployeeContainer *employees) {
     this->employees = employees;
 }
-void ClassContainer::setFeeds(FeedContainer *feeds) {
+void ClassContainer::setFeeds(FeedbackContainer *feeds) {
     this->feeds = feeds;
 }
 

@@ -3,6 +3,7 @@
 //
 #include "feedback.h"
 #include "InvalidDataException.h"
+#include <iostream>
 
 bool Feedback::pointer(void * ptr){
     if(ptr == NULL){
@@ -12,7 +13,7 @@ bool Feedback::pointer(void * ptr){
 }
 
 
-Feedback::Feedback(Class *classes, Client *client, Feed *feed) {
+Feedback::Feedback(Class *classes, Client *client, int feed) {
     this->setClass(classes);
     this->setClient(client);
     this->setFeed(feed);
@@ -46,7 +47,7 @@ void Feedback::setClient(Client *client){
     if(pointer(client)==true){
         this->client = client;
     }else{
-        string msg = "Enroll: client = NULL";
+        string msg = "Feedback: client = NULL";
         throw InvalidDataException(msg);
     }
 
@@ -65,18 +66,27 @@ Feedback::~Feedback() {
 
 }
 
-void Feedback::setFeed(Feed *feed) {
-    if(pointer(feed)==true){
+void Feedback::setFeed(int feed) {
+    if (FeedValid(feed)== true) {
         this->feed = feed;
     }else{
-        string msg = "Feedback: class = NULL";
+        string msg = "Feed error";
         throw InvalidDataException(msg);
     }
+
 }
 
-Feed *Feedback::getFeed() const {
+int Feedback::getFeed() const {
     return this->feed;
 }
+
+bool Feedback::FeedValid(int feed) {
+    if (feed < 0 || feed >5){
+        return false;
+    }
+    return true;
+}
+
 
 
 

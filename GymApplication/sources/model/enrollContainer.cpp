@@ -41,16 +41,7 @@ list<tuple<Class *, int>> EnrollContainer::getClasses(int number) {
     }
     return newlist;
 }
-list<Client *> EnrollContainer::getClients(const string &initials) {
-    list<Client *> newlist;
-    for (list<Enroll>::iterator it = this->enrolls.begin(); it != this->enrolls.end(); ++it){
-        Class * classes = it->getClass();
-        if(classes->getInitials() == initials){
-            newlist.push_back(it->getClient());
-        }
-    }
-    return newlist;
-}
+
 
 void  EnrollContainer::add(const Enroll& obj){
     Class* classes = obj.getClass();

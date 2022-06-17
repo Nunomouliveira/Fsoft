@@ -13,9 +13,9 @@ class FeedbackContainer{
 private:
     list<Feedback> feedbacks;
 public:
-    list<Feedback>::iterator searchCla(int number, const string& initials, int feed);
+    list<Feedback>::iterator searchCla(int number, const string& initials);
     list<Feedback> getAll();
-    Feedback* getCla(int number, const string& initials, int feed);
+    Feedback* getCla(int number, const string& initials);
     void add(const Feedback& obj);
 };
 #endif //GYMAPPLICATION_FEEDBACKCONTAINER_H

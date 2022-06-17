@@ -14,7 +14,6 @@ Gym::Gym(const string& name){
 }
 Gym::Gym(const Gym& obj){
     this->name = obj.name;
-    this->feed = obj.feed;
     this->feedback=obj.feedback;
     this->classes = obj.classes;
     this->clients = obj.clients;
@@ -46,16 +45,13 @@ EnrollContainer & Gym::getEnrollContainer(){
 FeedbackContainer & Gym::getFeedbackContainer() {
     return this->feedback;
 }
-FeedContainer & Gym::getFeedContainer() {
-    return this->feed;
-}
 
 void Gym::setDataForConsistency(){
     this->clients.setEnrolls(&this->enrolls);
-    this->clients.setFeeds(&this->feed);
+    this->clients.setFeeds(&this->feedback);
     this->classes.setEnrolls(&this->enrolls);
     this->classes.setEmployees(&this->employees);
-    this->classes.setFeeds(&this->feed);
+    this->classes.setFeeds(&this->feedback);
 }
 
 

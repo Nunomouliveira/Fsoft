@@ -47,14 +47,13 @@ void ClientContainer::remove(int number){
         }else{
             string msg = "Client: " + to_string(number);
             throw DataConsistencyException(msg);
-
         }
     }
 }
 void ClientContainer::setEnrolls(EnrollContainer *enrolls) {
     this->enrolls = enrolls;
 }
-void ClientContainer::setFeeds(FeedContainer *feeds) {
+void ClientContainer::setFeeds(FeedbackContainer *feeds) {
     this->feeds = feeds;
 }
 

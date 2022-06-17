@@ -10,19 +10,17 @@ class Client : public Person{
 private:
     static int NUMBER;
     int number;
-    string age;
+    int age;
 public:
-    Client(const string& name, const string& age);
+    Client(const string& name, int age);
     Client(const Client& client);
     ~Client();
     int getNumber() const ;
-    void setNumber(int number);
-    string getAge() const;
-    void setAge(string age);
+    int getAge() const;
+    void setAge(int age);
     bool operator == (const Client& obj) const;
     bool operator == (int nr) const;
-    bool ValidAge(const string &age);
-    bool operator == (const string name);
+    bool ValidAge(int age);
 };
 
 

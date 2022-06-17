@@ -13,10 +13,10 @@ using namespace std;
 
 Client ClientView::getClient(){
 
-    Client client("Name", "age");
+    Client client("Name", 18);
     bool flag = false;
     string name;
-    string age;
+    int age;
     do{
         try{
             flag = false;

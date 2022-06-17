@@ -6,25 +6,25 @@
 #define GYMAPPLICATION_FEEDBACK_H
 #include "class.h"
 #include "client.h"
-#include "feed.h"
 using namespace std;
 
 class Feedback{
 private:
     Class * classes;
     Client * client;
-    Feed * feed;
+    int feed;
 public:
-    Feedback(Class *classes, Client * client, Feed *  feed);
+    Feedback(Class *classes, Client * client, int feed);
     Feedback(const Feedback& obj);
     ~Feedback();
     Class* getClass() const;
     void setClass(Class *classes);
     Client* getClient() const;
     void setClient(Client *client);
-    void setFeed(Feed *feed);
-    Feed* getFeed() const;
+    void setFeed(int feed);
+    int getFeed() const;
     bool pointer(void * ptr);
+    bool FeedValid(int feed);
     bool operator == (const Feedback& obj) const;
 };
 

@@ -5,7 +5,6 @@
 #ifndef GYMAPPLICATION_GYM_H
 #define GYMAPPLICATION_GYM_H
 #include <string>
-#include "FeedContainer.h"
 #include "classContainer.h"
 #include "clientContainer.h"
 #include "employeeContainer.h"
@@ -21,7 +20,6 @@ private :
     EmployeeContainer employees;
     EnrollContainer enrolls;
     FeedbackContainer feedback;
-    FeedContainer feed;
     void setDataForConsistency();
 public:
     Gym();
@@ -35,7 +33,7 @@ public:
     EmployeeContainer & getEmployeeContainer();
     EnrollContainer & getEnrollContainer();
     FeedbackContainer & getFeedbackContainer();
-    FeedContainer & getFeedContainer();
+
 };
 
 

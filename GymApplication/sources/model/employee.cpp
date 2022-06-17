@@ -1,6 +1,7 @@
 //
 // Created by migue on 09/06/2022.
 //
+#include <iostream>
 #include "employee.h"
 #include "InvalidDataException.h"
 
@@ -29,14 +30,8 @@ const string& Employee::getInitials() const {
 }
 
 void Employee::setInitials(const string &initials) {
-
-    if(ValidInitials(initials)){
         this->initials = initials;
-    }else{
 
-        string msg = "Employee: " + initials;
-        throw InvalidDataException(msg);
-    }
 }
 LectureContainer & Employee::getLectures(){
     return this->lectures;
