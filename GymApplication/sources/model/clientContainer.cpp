@@ -1,9 +1,7 @@
 //
 // Created by migue on 09/06/2022.
 //
-#include <tuple>
 #include "DuplicatedDataException.h"
-#include "DataConsistencyException.h"
 #include "clientContainer.h"
 using namespace std;
 
@@ -33,21 +31,14 @@ void ClientContainer::add(const Client& obj){
     if(it == this->clients.end()){
         this->clients.push_back(obj);
     }else{
-        string msg = "Client: " + to_string(obj.getNumber());
+        string msg = "Client error";
         throw DuplicatedDataException(msg);
     }
 }
-void ClientContainer::remove(int number){
-    list<tuple<Class *, int>> l;
+void  ClientContainer::remove(int number){
     list<Client>::iterator it = search(number);
     if(it != this->clients.end()){
-        l = this->enrolls->getClasses(number);
-        if(l.size() == 0){
-            this->clients.erase(it);
-        }else{
-            string msg = "Client: " + to_string(number);
-            throw DataConsistencyException(msg);
-        }
+        this->clients.erase(it);
     }
 }
 void ClientContainer::setEnrolls(EnrollContainer *enrolls) {
