@@ -30,7 +30,7 @@ void ClassContainer::add(const Class& obj){
     if(it == this->classes.end()){
         this->classes.push_back(obj);
     }else{
-        string msg = "Employee: Error";
+        string msg = "Class: Error";
         throw DuplicatedDataException(msg);
     }
 

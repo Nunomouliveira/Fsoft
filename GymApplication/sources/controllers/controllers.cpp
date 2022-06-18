@@ -47,9 +47,9 @@ void Controller::runClients() {
             case 2:{
                 int number = Utils::getNumber("Enter the Client Number");
                 ClientContainer& container = this->model.getClientContainer();
-                Client * ptr = container.get(number);
-                if(ptr != NULL){
-                    this->clientView.printClient(ptr);
+                Client* client = container.get(number);
+                if(client != NULL){
+                    this->clientView.printClient(client);
                 }else{
                     cout<<"Client does not exist."<<endl;
                 }
@@ -68,7 +68,6 @@ void Controller::runClients() {
                 break;
             case 4:
             {
-                cout<<this->model.getName()<<endl;
                 ClientContainer container = this->model.getClientContainer();
                 list<Client> clients = container.getAll();
                 this->clientView.printClients(clients);
@@ -94,9 +93,9 @@ void Controller::runEmployees() {
             case 2: {
                 string initials = Utils::getString("Enter the Employee Initials");
                 EmployeeContainer &container = this->model.getEmployeeContainer();
-                Employee *ptr = container.get(initials);
-                if (ptr != NULL) {
-                    this->employeeView.printEmployee(ptr);
+                Employee* employee = container.get(initials);
+                if (employee != NULL) {
+                    this->employeeView.printEmployee(employee);
                 } else {
                     cout << "Employee does not exist." << endl;
                 }
@@ -114,11 +113,9 @@ void Controller::runEmployees() {
             }
                 break;
             case 4: {
-                cout << this->model.getName() << endl;
                 EmployeeContainer container = this->model.getEmployeeContainer();
                 list<Employee> employees = container.getAll();
                 this->employeeView.printEmployees(employees);
-
             }
                 break;
             case 5:
@@ -144,9 +141,9 @@ void Controller::runClasses() {
             case 2:{
                 string initials = Utils::getString("Enter the Class Initials");
                 ClassContainer& container = this->model.getClassContainer();
-                Class * ptr = container.get(initials);
-                if(ptr != NULL){
-                    this->classView.printClass(ptr);
+                Class* classes = container.get(initials);
+                if(classes != NULL){
+                    this->classView.printClass(classes);
                 }else{
                     cout<<"Class does not exist."<<endl;
                 }
@@ -165,14 +162,11 @@ void Controller::runClasses() {
                 break;
             case 4:
             {
-                cout << this->model.getName() << endl;
                 ClassContainer container = this->model.getClassContainer();
                 list<Class> classes = container.getAll();
                 this->classView.printClasses(classes);
-
             }
                 break;
-
             default:
                 break;
         }
@@ -194,9 +188,9 @@ void Controller::runEnrolls(){
                 int number = Utils::getNumber("Enter Client IDNumber");
                 string denomination = Utils::getString("Enter Class Initials");
                 EnrollContainer& container = this->model.getEnrollContainer();
-                Enroll * ptr = container.get(number, denomination);
-                if(ptr != NULL){
-                    this->enrollView.printEnroll(ptr);
+                Enroll* enroll = container.get(number, denomination);
+                if(enroll != NULL){
+                    this->enrollView.printEnroll(enroll);
                 }else{
                     cout<<"Enroll does not exist."<<endl;
                 }
@@ -216,7 +210,6 @@ void Controller::runEnrolls(){
                 break;
             case 4:
             {
-                cout<<this->model.getName()<<endl;
                 EnrollContainer container = this->model.getEnrollContainer();
                 list<Enroll> enrolls = container.getAll();
                 this->enrollView.printEnrolls(enrolls);
@@ -237,9 +230,11 @@ void Controller::runLectures(){
 
         switch(op){
             case 1:	{
-                string name = Utils::getString("Enter the Employee Initials");
+                string initials;
+                cout << "Enter the Employee Initials";
+                cin >> initials;
                 EmployeeContainer& container = this->model.getEmployeeContainer();
-                Employee * employee = container.get(name);
+                Employee* employee = container.get(initials);
                 if(employee != NULL){
                     Lecture lecture = this->lectureView.getLecture(this->model.getClassContainer());
                     LectureContainer& container1 = employee->getLectures();
@@ -250,22 +245,28 @@ void Controller::runLectures(){
             }
                 break;
             case 2:{
-                string initials = Utils::getString("Enter the Employee Initials");
+                string initials;
+                cout << "Enter Employee Initials: ";
+                cin >> initials;
                 EmployeeContainer& container = this->model.getEmployeeContainer();
                 Employee * employee = container.get(initials);
                 if(employee != NULL){
-                    string denomination1 = Utils::getString("Enter the Class Initials");
+                    string initials1;
+                    cout << "Enter Class Initials: ";
+                    cin >> initials1;
                     LectureContainer& container1 = employee->getLectures();
-                    container1.remove(denomination1);
+                    container1.remove(initials1);
                 }else{
                     cout<<"Employee does not exist."<<endl;
                 }
             }
                 break;
             case 3:	{
-                string name = Utils::getString("Enter the Employee Initials");
+                string initials;
+                cout << "Enter Employee Initials: ";
+                cin >> initials;
                 EmployeeContainer& container = this->model.getEmployeeContainer();
-                Employee * employee = container.get(name);
+                Employee* employee = container.get(initials);
                 if(employee != NULL){
                     LectureContainer& container1 = employee->getLectures();
                     list<Lecture> listLecture = container1.getAll();
@@ -292,7 +293,6 @@ void Controller::runFeedback() {
                 Feedback feedback = this->feedbackView.getFeedback((this->model.getClientContainer()),(this->model.getClassContainer()),(this->model.getFeedbackContainer()));
                 FeedbackContainer& container = this->model.getFeedbackContainer();
                 container.add(feedback);
-
             }
             break;
             case 2:{
@@ -303,16 +303,15 @@ void Controller::runFeedback() {
                 cout << "Enter Class Initials: ";
                 cin >> initials;
                 FeedbackContainer& container = this->model.getFeedbackContainer();
-                Feedback * ptr = container.getCla(number, initials);
-                if(ptr != NULL){
-                    this->feedbackView.printFeedback(ptr);
+                Feedback* feedback= container.getCla(number, initials);
+                if(feedback != NULL){
+                    this->feedbackView.printFeedback(feedback);
                 }else{
                     cout<<"Feedback Error"<<endl;
                 }
             }
             break;
             case 3:{
-                cout<<this->model.getName()<<endl;
                 FeedbackContainer container = this->model.getFeedbackContainer();
                 list<Feedback> feedbacks = container.getAll();
                 this->feedbackView.printFeedbacks(feedbacks);

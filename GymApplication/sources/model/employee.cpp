@@ -5,12 +5,6 @@
 #include "employee.h"
 #include "InvalidDataException.h"
 
-bool Employee::ValidInitials(const string &initials) {
-    if(initials.length() != 4){
-        return false;
-    }
-    return true;
-}
 
 Employee::Employee(const string &initials, const string &name) :Person(name){
     setInitials(initials);
@@ -30,8 +24,7 @@ const string& Employee::getInitials() const {
 }
 
 void Employee::setInitials(const string &initials) {
-        this->initials = initials;
-
+    this->initials = initials;
 }
 LectureContainer & Employee::getLectures(){
     return this->lectures;

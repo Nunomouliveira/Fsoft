@@ -13,7 +13,8 @@ using namespace std;
 
 
 Lecture LectureView::getLecture(ClassContainer & classes){
-    Lecture lecture((Class *)1);
+    Class class1("PIES", "Pilates");
+    Lecture lecture(&class1);
     string initials;
     bool flag = false;
     do{
@@ -21,8 +22,8 @@ Lecture LectureView::getLecture(ClassContainer & classes){
             flag = false;
             cout << "Enter Class Initials: ";
             cin >> initials;
-            Class *classet = classes.get(initials);
-            lecture.setClass(classet);
+            Class *class2 = classes.get(initials);
+            lecture.setClass(class2);
 
         }catch(InvalidDataException& e){
             flag = true;
@@ -33,7 +34,7 @@ Lecture LectureView::getLecture(ClassContainer & classes){
 
 void LectureView::printLecture(Lecture *lecture){
     Class * classes = lecture->getClass();
-    cout<<"\t"<<classes->getDenomination()<<" - "<<classes->getInitials()<<endl;
+    cout<<classes->getDenomination()<<" - "<<classes->getInitials()<<endl;
 }
 void LectureView::printLectures(Employee * employee, list<Lecture>& lectures){
     cout<<employee->getInitials()<<":"<<employee->getName()<<endl;

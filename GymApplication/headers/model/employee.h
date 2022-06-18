@@ -20,7 +20,6 @@ public:
     LectureContainer & getLectures();
     bool operator == (const Employee& obj) const;
     bool operator == (const string initials) const;
-    bool ValidInitials(const string& initials);
 
 };
 

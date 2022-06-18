@@ -10,7 +10,9 @@ using namespace std;
 
 
 Enroll EnrollView::getEnroll(ClientContainer & client, ClassContainer & classes){
-    Enroll enroll((Class *)1,(Client *)1);
+    Class class1 ("PIES","Pilates");
+    Client clients("Miguel", 18);
+    Enroll enroll(&class1,&clients);
     int number;
     string initials;
     bool flag = false;
@@ -19,12 +21,12 @@ Enroll EnrollView::getEnroll(ClientContainer & client, ClassContainer & classes)
             flag = false;
             cout << "Enter client number: " ;
             cin >> number;
-            Client *clients = client.get(number);
-            enroll.setClient(clients);
+            Client *client1 = client.get(number);
+            enroll.setClient(client1);
             cout << "Enter Class Initials: ";
             cin >> initials;
-            Class *classet = classes.get(initials);
-            enroll.setClass(classet);
+            Class *class2 = classes.get(initials);
+            enroll.setClass(class2);
         }catch(InvalidDataException& e){
             flag = true;
         }
@@ -33,8 +35,8 @@ Enroll EnrollView::getEnroll(ClientContainer & client, ClassContainer & classes)
 }
 
 void EnrollView::printEnroll(Enroll *enroll){
-    Client *client = enroll->getClient();
-    Class * classes = enroll->getClass();
+    Client* client = enroll->getClient();
+    Class* classes = enroll->getClass();
     cout<<client->getNumber()<<". Nome:"<<client->getName()<<" -> "<<classes->getInitials()<<" - "<<classes->getDenomination()<<endl;
 }
 void EnrollView::printEnrolls(list<Enroll>& enrolls){
