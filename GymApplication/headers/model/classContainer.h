@@ -9,17 +9,17 @@
 #include "class.h"
 #include "enrollContainer.h"
 #include "employeeContainer.h"
-#include "FeedbackContainer.h"
+#include "feedbackContainer.h"
 using namespace std;
 
 class ClassContainer{
 private:
-    vector<Class> classes;
+    list<Class> classes;
     EnrollContainer *enrolls;
     EmployeeContainer *employees;
     FeedbackContainer *feeds;
 public:
-    int search(const string& initials);
+    list<Class>::iterator search(const string& initials);
     list<Class> getAll();
     Class* get(const string& initials);
     void add(const Class& obj);

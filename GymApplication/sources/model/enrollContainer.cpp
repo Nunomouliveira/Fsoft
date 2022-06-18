@@ -30,18 +30,6 @@ Enroll*  EnrollContainer::get(int number, const string& initials){
     }
     return NULL;
 }
-list<tuple<Class *, int>> EnrollContainer::getClasses(int number) {
-    list<tuple<Class *, int>> newlist;
-    for (list<Enroll>::iterator it = this->enrolls.begin(); it != this->enrolls.end(); ++it){
-        Client * client = it->getClient();
-        if(client->getNumber()== number){
-            tuple<Class *, int> t = make_tuple(it->getClass(),0);
-            newlist.push_back(t);
-        }
-    }
-    return newlist;
-}
-
 
 void  EnrollContainer::add(const Enroll& obj){
     Class* classes = obj.getClass();
@@ -50,7 +38,7 @@ void  EnrollContainer::add(const Enroll& obj){
     if(it == this->enrolls.end()){
         this->enrolls.push_back(obj);
     }else{
-        string msg = "Enroll: " + to_string(client->getNumber())+" " + classes->getInitials();
+        string msg = "Enroll: Error" ;
         throw DuplicatedDataException(msg);
     }
 }

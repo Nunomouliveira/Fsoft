@@ -27,12 +27,12 @@ Lecture*  LectureContainer::get(const string& initials){
     return NULL;
 }
 void  LectureContainer::add(const Lecture& obj){
-    Class* subject = obj.getClass();
-    list<Lecture>::iterator it = search(subject->getInitials());
+    Class* classes = obj.getClass();
+    list<Lecture>::iterator it = search(classes->getInitials());
     if(it == this->lectures.end()){
         this->lectures.push_back(obj);
     }else{
-        string msg = "Lecture: " + subject->getInitials();
+        string msg = "Lecture: " + classes->getInitials();
         throw  DuplicatedDataException(msg);
     }
 

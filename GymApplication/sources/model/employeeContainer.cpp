@@ -31,7 +31,7 @@ void  EmployeeContainer::add(const Employee& obj){
     if(it == this->employees.end()){
         this->employees.push_back(obj);
     }else{
-        string msg = "Employee: " + obj.getInitials();
+        string msg = "Employee: Error";
         throw DuplicatedDataException(msg);
     }
 
@@ -42,14 +42,4 @@ void  EmployeeContainer::remove(const string& initials){
         this->employees.erase(it);
     }
 }
-bool  EmployeeContainer::anyClass(const string &initials) {
-    Lecture * lecture =NULL;
-    for (list<Employee>::iterator it = this->employees.begin(); it != this->employees.end(); ++it){
-        LectureContainer& lectures = it->getLectures();
-        lecture = lectures.get(initials);
-        if(lecture != NULL){
-            return true;
-        }
-    }
-    return false;
-}
+

@@ -16,7 +16,6 @@ public:
     Employee* get(const string& initials);
     void add(const Employee& obj);
     void remove(const string& initials);
-    bool anyClass(const string& initials);
 };
 
 #endif //GYMAPPLICATION_EMPLOYEECONTAINER_H

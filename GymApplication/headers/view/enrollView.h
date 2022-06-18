@@ -15,7 +15,6 @@ public:
     Enroll getEnroll(ClientContainer & clients, ClassContainer & classes);
     void printEnroll(Enroll *enroll);
     void printEnrolls(list<Enroll>& enrolls);
-    void printClassEnrolls(Class * classes, list<Client *>& clients);
 };
 
 #endif //FSOFT2022_1A_4_ENROLLVIEW_H

@@ -5,52 +5,40 @@
 #include "classContainer.h"
 #include "DataConsistencyException.h"
 
-int ClassContainer::search(const string& initials){
-    for (unsigned i=0; i<this->classes.size(); ++i){
-        if( this->classes[i] == initials){
-            return i;
+list<Class>::iterator ClassContainer::search(const string& initials){
+    list<Class>::iterator it = this->classes.begin();
+    for (; it != this->classes.end(); ++it){
+        if((*it) == initials){
+            return it;
         }
     }
-    return -1;
+    return it;
 }
 list<Class> ClassContainer::getAll(){
-    list<Class> list;
-    for (vector<Class>::iterator it = this->classes.begin(); it != this->classes.end(); ++it){
-        list.push_back(*it);
-    }
-    return list;
+    list<Class> newlist (this->classes);
+    return newlist;
 }
 Class* ClassContainer::get(const string& initials){
-    Class *classes = NULL;
-    int i = search(initials);
-    if(i != -1){
-        classes = &this->classes[i];
+    list<Class>::iterator it = search(initials);
+    if(it != this->classes.end()){
+        return &(*it);
     }
-    return classes;
+    return NULL;
 }
 void ClassContainer::add(const Class& obj){
-    int i = search(obj.getInitials());
-    if(i == -1){
+    list<Class>::iterator it = search(obj.getInitials());
+    if(it == this->classes.end()){
         this->classes.push_back(obj);
     }else{
-        string msg = "Class: " + obj.getInitials();
+        string msg = "Employee: Error";
         throw DuplicatedDataException(msg);
     }
 
 }
 void ClassContainer::remove(const string& initials){
-    list<Class *> listEnrolls;
-    bool exist;
-    int i = search(initials);
-    if(i != -1){
-        exist = this->employees->anyClass(initials);
-        if(listEnrolls.size() == 0 && exist==false){
-            this->classes.erase(this->classes.begin() + i);
-        }else{
-            string msg = "Class: " + initials;
-            throw DataConsistencyException(msg);
-
-        }
+    list<Class>::iterator it = search(initials);
+    if(it != this->classes.end()){
+        this->classes.erase(it);
     }
 }
 
