@@ -57,10 +57,6 @@ set(MODEL_SOURCE_FILES
         ${PROJECT_SOURCES_MODEL_DIR}/class.cpp
         ${PROJECT_HEADERS_MODEL_DIR}/classContainer.h
         ${PROJECT_SOURCES_MODEL_DIR}/classContainer.cpp
-        ${PROJECT_HEADERS_MODEL_DIR}/feed.h
-        ${PROJECT_SOURCES_MODEL_DIR}/feed.cpp
-        ${PROJECT_HEADERS_MODEL_DIR}/FeedContainer.h
-        ${PROJECT_SOURCES_MODEL_DIR}/FeedContainer.cpp
         ${PROJECT_HEADERS_MODEL_DIR}/feedbackContainer.h
         ${PROJECT_SOURCES_MODEL_DIR}/feedbackContainer.cpp
         ${PROJECT_HEADERS_MODEL_DIR}/feedback.h

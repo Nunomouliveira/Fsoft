@@ -6,7 +6,10 @@
 #include "DuplicatedDataException.h"
 
 TEST(FeedbackContainerAddTest, FeedbackValid) {
-Feedback feedback ((Class*)1,(Client*)1,(Feed*)1);
+Class classes ("PIES", "Pilates");
+Client client ("Miguel", 18);
+int feed = 3;
+Feedback feedback (&classes,&client,feed);
 FeedbackContainer container;
 bool flag = true;
 try{
@@ -16,8 +19,11 @@ flag = false;
 }
 EXPECT_TRUE(flag);
 }
-TEST(FeedbackContainAddTest, NoDuplicatedFeedback) {
-    Feedback feedback ((Class*)1,(Client*)1,(Feed*)1);
+TEST(FeedbackContainerAddTest, NoDuplicatedFeedback) {
+    Class classes ("PIES", "Pilates");
+    Client client ("Miguel", 18);
+    int feed = 3;
+    Feedback feedback (&classes,&client,feed);
     FeedbackContainer container;
     bool flag = true;
     try{

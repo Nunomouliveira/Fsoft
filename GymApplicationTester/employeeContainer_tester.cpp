@@ -40,7 +40,7 @@ TEST(StudentContainerAddTest, DuplicateStudent) {
 TEST(EmployeeContainerRemoveTest, NoDataConsistencyProblem) {
     Employee employee1 ("MIEL", "Miguel");
     Employee employee2 ("NOLI", "Nuno");
-    Class classes ("XXXX", "XXXXXXXXXXXXXXXXXXXX");
+    Class classes ("PIES", "Pilates");
     Lecture lecture(&classes);
     LectureContainer lectureContainer;
     lectureContainer.add(lecture);

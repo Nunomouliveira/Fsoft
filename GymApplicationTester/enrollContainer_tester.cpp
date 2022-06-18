@@ -7,7 +7,9 @@
 
 
 TEST(EnrollContainerAddTest, EnrollValid) {
-    Enroll enroll ((Class*)1,(Client*)1);
+    Client client ("Miguel", 18);
+    Class classes("PIES", "Pilates");
+    Enroll enroll(&classes,&client);
     EnrollContainer container;
     bool flag = true;
     try{
@@ -18,8 +20,10 @@ TEST(EnrollContainerAddTest, EnrollValid) {
     EXPECT_TRUE(flag);
 }
 
-TEST(EnrollContainAddTest, NoDuplicatedEnroll) {
-    Enroll enroll ((Class*)1,(Client*)1);
+TEST(EnrollContainerAddTest, NoDuplicatedEnroll) {
+    Client client("Miguel", 18);
+    Class classes("PIES","Pilates");
+    Enroll enroll(&classes,&client);
     EnrollContainer container;
     bool flag = true;
     try{
@@ -34,7 +38,7 @@ TEST(EnrollContainAddTest, NoDuplicatedEnroll) {
 
 
 TEST(EnrollContainerRemoveTest, NoDataConsistencyProblem) {
-    Client client("Miguel","18");
+    Client client("Miguel",18);
     Class classes("PIES","Pilates");
     Enroll enroll(&classes,&client);
     EnrollContainer container;

@@ -21,7 +21,8 @@ TEST(LectureContainerAddTest, LectureValid) {
 
 
 TEST(LectureContainAddTest, NoDuplicatedLecture) {
-    Lecture lecture ((Class*)1);
+    Class classes("PIES","Pilates");
+    Lecture lecture(&classes);
     LectureContainer container;
     bool flag = true;
     try{

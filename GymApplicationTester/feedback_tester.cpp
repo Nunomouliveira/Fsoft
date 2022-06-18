@@ -9,7 +9,7 @@
 TEST(FeedbackConstructorTest, ValidFeedback) {
     bool flag = false;
     try{
-        Feedback feedback ((Class*)1, (Client*)1,(Feed*)1);
+        Feedback feedback ((Class*)1, (Client*)1,0);
     }catch(InvalidDataException& e){
         flag = true;
     }
@@ -18,14 +18,14 @@ TEST(FeedbackConstructorTest, ValidFeedback) {
 TEST(FeedbackConstructorTest, InvalidFeedback) {
     bool flag = false;
     try{
-        Feedback feedback ((Class*)0, (Client*)1,(Feed*)1);
+        Feedback feedback ((Class*)0, (Client*)1,0);
     }catch(InvalidDataException& e){
         flag = true;
     }
     EXPECT_TRUE(flag);
 }
 TEST(FeedbackSetClassTest, InvalidFeedback) {
-    Feedback feedback((Class*)1,(Client*)1,(Feed*)1);
+    Feedback feedback((Class*)1,(Client*)1,0);
     bool flag = false;
     try{
         feedback.setClass((Class*)0);
@@ -36,7 +36,7 @@ TEST(FeedbackSetClassTest, InvalidFeedback) {
 }
 
 TEST(FeedbackSetClassTest, ValidFeedback) {
-    Feedback feedback((Class*)1,(Client*)1,(Feed*)1);
+    Feedback feedback((Class*)1,(Client*)1,0);
     bool flag = false;
     try{
         feedback.setClass((Class*)1);
@@ -46,7 +46,7 @@ TEST(FeedbackSetClassTest, ValidFeedback) {
     EXPECT_FALSE(flag);
 }
 TEST(FeedbackSetClientTest, InvalidFeedback) {
-    Feedback feedback((Class*)1,(Client*)1,(Feed*)1);
+    Feedback feedback((Class*)1,(Client*)1,0);
     bool flag = false;
     try{
         feedback.setClient((Client*)0);
@@ -57,7 +57,7 @@ TEST(FeedbackSetClientTest, InvalidFeedback) {
 }
 
 TEST(FeedbackSetClientTest, ValidFeedback) {
-    Feedback feedback((Class*)1,(Client*)1, (Feed*)1);
+    Feedback feedback((Class*)1,(Client*)1, 0);
     bool flag = false;
     try{
         feedback.setClient((Client*)1);
@@ -67,10 +67,13 @@ TEST(FeedbackSetClientTest, ValidFeedback) {
     EXPECT_FALSE(flag);
 }
 TEST(FeedbackSetFeedTest, InvalidFeedback) {
-    Feedback feedback((Class*)1,(Client*)1,(Feed*)1);
+    Class classes ("PIES", "Pilates");
+    Client client ("Miguel", 18);
+    int feed = 3;
+    Feedback feedback(&classes,&client,feed);
     bool flag = false;
     try{
-        feedback.setFeed((Feed*)0);
+        feedback.setFeed(1);
     }catch(InvalidDataException& e){
         flag = true;
     }
@@ -78,10 +81,10 @@ TEST(FeedbackSetFeedTest, InvalidFeedback) {
 }
 
 TEST(FeedbackSetFeedTest, ValidFeedback) {
-    Feedback feedback((Class*)1,(Client*)1, (Feed*)1);
+    Feedback feedback((Class*)1,(Client*)1, 1);
     bool flag = false;
     try{
-        feedback.setFeed((Feed*)1);
+        feedback.setFeed(1);
     }catch(InvalidDataException& e){
         flag = true;
     }

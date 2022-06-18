@@ -8,7 +8,7 @@
 
 
 TEST(ClientContainerAddTest, ClientValid) {
-    Client client ("Miguel", "18");
+    Client client ("Miguel", 18);
     ClientContainer container;
     bool flag = true;
     try{
@@ -26,7 +26,7 @@ TEST(ClientContainerAddTest, ClientValid) {
 
 
 TEST(ClientContainerAddTest, DuplicatedClient) {
-    Client client ("Miguel", "18");
+    Client client ("Miguel", 18);
     ClientContainer container;
     bool flag = true;
     try{
@@ -39,9 +39,9 @@ TEST(ClientContainerAddTest, DuplicatedClient) {
 }
 
 TEST(ClientContainerRemoveTest, NoDataConsistencyProblem) {
-    Client client ("Maria", "18");
-    Client client1 ("Nuno", "18");
-    Class classes ("XXXX", "XXXXXXXXXXXXXX");
+    Client client ("Miguel", 18);
+    Client client1 ("Nuno", 18);
+    Class classes ("PIES", "Pilates");
     Enroll enroll(&classes, &client);
     EnrollContainer enrollContainer;
     enrollContainer.add(enroll);
@@ -65,8 +65,8 @@ TEST(ClientContainerRemoveTest, NoDataConsistencyProblem) {
 }
 
 TEST(ClientContainerRemoveTest, DataConsistencyProblem) {
-    Client client ("Miguel", "18");
-    Class classes ("XXXX", "XXXXXXXXXXXXXXXXXXX");
+    Client client ("Miguel", 18);
+    Class classes ("PIES", "Pilates");
     Enroll enroll(&classes, &client);
     EnrollContainer enrollContainer;
     enrollContainer.add(enroll);
