@@ -11,7 +11,7 @@
 
 class FeedbackView{
 public:
-    Feedback getFeedback(ClientContainer & clients, ClassContainer & classes, FeedbackContainer & feeds);
+    Feedback getFeedback(ClientContainer & clients, ClassContainer & classes);
     void printFeedback(Feedback *feedback);
     void printFeedbacks(list<Feedback>& feedbacks);
 };

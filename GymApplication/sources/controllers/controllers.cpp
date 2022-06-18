@@ -45,7 +45,7 @@ void Controller::runClients() {
             }
                 break;
             case 2:{
-                int number = Utils::getNumber("Enter the Client Number");
+                int number = Utils::getNumber("Enter the Client Number: ");
                 ClientContainer& container = this->model.getClientContainer();
                 Client* client = container.get(number);
                 if(client != NULL){
@@ -68,7 +68,7 @@ void Controller::runClients() {
                 break;
             case 4:
             {
-                ClientContainer container = this->model.getClientContainer();
+                ClientContainer& container = this->model.getClientContainer();
                 list<Client> clients = container.getAll();
                 this->clientView.printClients(clients);
             }
@@ -290,7 +290,7 @@ void Controller::runFeedback() {
         op= this->view.menuFeedback();
         switch (op) {
             case 1:{
-                Feedback feedback = this->feedbackView.getFeedback((this->model.getClientContainer()),(this->model.getClassContainer()),(this->model.getFeedbackContainer()));
+                Feedback feedback = this->feedbackView.getFeedback((this->model.getClientContainer()),(this->model.getClassContainer()));
                 FeedbackContainer& container = this->model.getFeedbackContainer();
                 container.add(feedback);
             }

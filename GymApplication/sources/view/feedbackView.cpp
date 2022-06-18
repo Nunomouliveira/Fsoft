@@ -8,7 +8,7 @@
 using namespace std;
 
 
-Feedback FeedbackView::getFeedback(ClientContainer &clients, ClassContainer &classes, FeedbackContainer &feeds) {
+Feedback FeedbackView::getFeedback(ClientContainer &clients, ClassContainer &classes) {
     Class class1("PIES","Pilates");
     Client client("Miguel",18);
     int feed=4;

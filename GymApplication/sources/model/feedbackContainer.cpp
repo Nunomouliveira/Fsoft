@@ -30,13 +30,12 @@ Feedback* FeedbackContainer::getCla(int number, const string& initials){
     return NULL;
 }
 
-void  FeedbackContainer::add(const Feedback& obj){
-    Class* classes = obj.getClass();
-    Client * client = obj.getClient();
-    int feed = obj.getFeed();
+void  FeedbackContainer::add(const Feedback& feedback){
+    Class* classes = feedback.getClass();
+    Client* client = feedback.getClient();
     list<Feedback>::iterator it = searchCla(client->getNumber(),classes->getInitials());
     if(it == this->feedbacks.end()){
-        this->feedbacks.push_back(obj);
+        this->feedbacks.push_back(feedback);
     }else{
         string msg = "Feedback Error";
         throw DuplicatedDataException(msg);

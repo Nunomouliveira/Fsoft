@@ -26,10 +26,10 @@ Client* ClientContainer::get(int number){
     return NULL;
 
 }
-void ClientContainer::add(const Client& obj){
-    list<Client>::iterator it = search(obj.getNumber());
+void ClientContainer::add(const Client& client){
+    list<Client>::iterator it = search(client.getNumber());
     if(it == this->clients.end()){
-        this->clients.push_back(obj);
+        this->clients.push_back(client);
     }else{
         string msg = "Client error";
         throw DuplicatedDataException(msg);
