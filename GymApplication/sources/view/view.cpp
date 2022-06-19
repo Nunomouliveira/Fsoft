@@ -49,10 +49,9 @@ int View::menuEmployees() {
         cout<<"2 - Find\n";
         cout<<"3 - Remove\n";
         cout<<"4 - List\n";
-        cout<<"5 - Lectures\n";
         cout<<"\n0 - Exit\n";
         op = Utils::getNumber("Option");
-    }while(op < 0 || op > 5);
+    }while(op < 0 || op > 4);
     return op;
 }
 

@@ -6,8 +6,8 @@
 
 list<Lecture>::iterator LectureContainer::search(const string& initials){
     Class * classes;
-    list<Lecture>::iterator it = this->lectures.begin();
-    for (; it != this->lectures.end(); ++it){
+    list<Lecture>::iterator it = lectures.begin();
+    for (; it != lectures.end(); ++it){
         classes = it->getClass();
         if(*(classes) == initials){
             return it;
@@ -16,12 +16,12 @@ list<Lecture>::iterator LectureContainer::search(const string& initials){
     return it;
 }
 list<Lecture>  LectureContainer::getAll(){
-    list<Lecture> newlist (this->lectures);
+    list<Lecture> newlist (lectures);
     return newlist;
 }
 Lecture*  LectureContainer::get(const string& initials){
     list<Lecture>::iterator it = search(initials);
-    if(it != this->lectures.end()){
+    if(it != lectures.end()){
         return &*it;
     }
     return NULL;
@@ -29,8 +29,8 @@ Lecture*  LectureContainer::get(const string& initials){
 void  LectureContainer::add(const Lecture& obj){
     Class* classes = obj.getClass();
     list<Lecture>::iterator it = search(classes->getInitials());
-    if(it == this->lectures.end()){
-        this->lectures.push_back(obj);
+    if(it == lectures.end()){
+        lectures.push_back(obj);
     }else{
         string msg = "Lecture: " + classes->getInitials();
         throw  DuplicatedDataException(msg);
@@ -39,8 +39,8 @@ void  LectureContainer::add(const Lecture& obj){
 }
 void  LectureContainer::remove(const string& initials){
     list<Lecture>::iterator it = search(initials);
-    if(it != this->lectures.end()){
-        this->lectures.erase(it);
+    if(it != lectures.end()){
+        lectures.erase(it);
     }
 }
 

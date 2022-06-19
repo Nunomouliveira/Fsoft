@@ -6,8 +6,8 @@
 using namespace std;
 
 list<Client>::iterator ClientContainer::search(int number){
-    list<Client>::iterator it = this->clients.begin();
-    for (; it != this->clients.end(); ++it){
+    list<Client>::iterator it = clients.begin();
+    for (; it != clients.end(); ++it){
         if((*it) == number){
             return it;
         }
@@ -15,12 +15,12 @@ list<Client>::iterator ClientContainer::search(int number){
     return it;
 }
 list<Client> ClientContainer::getAll(){
-    list<Client> newlist (this->clients);
+    list<Client> newlist (clients);
     return newlist;
 }
 Client* ClientContainer::get(int number){
     list<Client>::iterator it = search(number);
-    if(it != this->clients.end()){
+    if(it != clients.end()){
         return &(*it);
     }
     return NULL;
@@ -28,8 +28,8 @@ Client* ClientContainer::get(int number){
 }
 void ClientContainer::add(const Client& client){
     list<Client>::iterator it = search(client.getNumber());
-    if(it == this->clients.end()){
-        this->clients.push_back(client);
+    if(it == clients.end()){
+        clients.push_back(client);
     }else{
         string msg = "Client error";
         throw DuplicatedDataException(msg);
@@ -37,8 +37,8 @@ void ClientContainer::add(const Client& client){
 }
 void  ClientContainer::remove(int number){
     list<Client>::iterator it = search(number);
-    if(it != this->clients.end()){
-        this->clients.erase(it);
+    if(it != clients.end()){
+        clients.erase(it);
     }
 }
 void ClientContainer::setEnrolls(EnrollContainer *enrolls) {

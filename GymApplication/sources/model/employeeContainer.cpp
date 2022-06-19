@@ -7,8 +7,8 @@
 
 
 list<Employee>::iterator EmployeeContainer::search(const string& initials){
-    list<Employee>::iterator it = this->employees.begin();
-    for (; it != this->employees.end(); ++it){
+    list<Employee>::iterator it = employees.begin();
+    for (; it != employees.end(); ++it){
         if((*it) == initials){
             return it;
         }
@@ -16,20 +16,20 @@ list<Employee>::iterator EmployeeContainer::search(const string& initials){
     return it;
 }
 list<Employee>  EmployeeContainer::getAll(){
-    list<Employee> newlist (this->employees);
+    list<Employee> newlist (employees);
     return newlist;
 }
 Employee* EmployeeContainer::get(const string& initials){
     list<Employee>::iterator it = search(initials);
-    if(it != this->employees.end()){
+    if(it != employees.end()){
         return &(*it);
     }
     return NULL;
 }
 void  EmployeeContainer::add(const Employee& obj){
     list<Employee>::iterator it = search(obj.getInitials());
-    if(it == this->employees.end()){
-        this->employees.push_back(obj);
+    if(it == employees.end()){
+        employees.push_back(obj);
     }else{
         string msg = "Employee: Error";
         throw DuplicatedDataException(msg);
@@ -38,8 +38,8 @@ void  EmployeeContainer::add(const Employee& obj){
 }
 void  EmployeeContainer::remove(const string& initials){
     list<Employee>::iterator it = search(initials);
-    if(it != this->employees.end()){
-        this->employees.erase(it);
+    if(it != employees.end()){
+        employees.erase(it);
     }
 }
 
