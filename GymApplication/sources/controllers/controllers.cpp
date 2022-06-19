@@ -24,7 +24,9 @@ void Controller::run(){
                 break;
             case 4:runEnrolls();
                 break;
-            case 5:runFeedback();
+            case 5:runLectures();
+                break;
+            case 6:runFeedback();
                 break;
             default:
                 break;
@@ -118,9 +120,7 @@ void Controller::runEmployees() {
                 this->employeeView.printEmployees(employees);
             }
                 break;
-            case 5:
-                runLectures();
-                break;
+
             default:
                 break;
         }
@@ -249,13 +249,11 @@ void Controller::runLectures(){
                 cout << "Enter Employee Initials: ";
                 cin >> initials;
                 EmployeeContainer& container = this->model.getEmployeeContainer();
-                Employee * employee = container.get(initials);
+                Employee* employee = container.get(initials);
                 if(employee != NULL){
-                    string initials1;
-                    cout << "Enter Class Initials: ";
-                    cin >> initials1;
                     LectureContainer& container1 = employee->getLectures();
-                    container1.remove(initials1);
+                    list<Lecture> listLecture = container1.getAll();
+                    this->lectureView.printLectures(employee, listLecture);
                 }else{
                     cout<<"Employee does not exist."<<endl;
                 }
@@ -266,11 +264,13 @@ void Controller::runLectures(){
                 cout << "Enter Employee Initials: ";
                 cin >> initials;
                 EmployeeContainer& container = this->model.getEmployeeContainer();
-                Employee* employee = container.get(initials);
+                Employee * employee = container.get(initials);
                 if(employee != NULL){
+                    string initials1;
+                    cout << "Enter Class Initials: ";
+                    cin >> initials1;
                     LectureContainer& container1 = employee->getLectures();
-                    list<Lecture> listLecture = container1.getAll();
-                    this->lectureView.printLectures(employee, listLecture);
+                    container1.remove(initials1);
                 }else{
                     cout<<"Employee does not exist."<<endl;
                 }

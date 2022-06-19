@@ -20,11 +20,12 @@ int View::menuGym() {
         cout<<"2 - Employees\n";
         cout<<"3 - Classes\n";
         cout<<"4 - Enrolls\n";
-        cout<<"5 - Feedback\n";
+        cout<<"5 - Lectures\n";
+        cout<<"6 - Feedback\n";
         cout<<"\n0 - Exit\n";
         op = Utils::getNumber("Option");
 
-    }while(op < 0 || op > 5);
+    }while(op < 0 || op > 6);
     return op;
 }
 int View::menuClients() {
@@ -88,8 +89,8 @@ int View::menuLectures() {
     do{
         cout<<"\n\n########## Menu Lectures ##########\n";
         cout<<"1 - Add\n";
-        cout<<"2 - Remove\n";
-        cout<<"3 - List\n";
+        cout<<"2 - List By Employee\n";
+        cout<<"3 - Remove\n";
         cout<<"\n0 - Exit\n";
         op = Utils::getNumber("Option");
     }while(op < 0 || op > 3);
